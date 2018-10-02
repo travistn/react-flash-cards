@@ -41,9 +41,10 @@ export default class Form extends React.Component {
           <p className="h3 mb-5 font-weight-light text-center">Create a Flash Card</p>
           <div className="form-group">
             <label
-              htmlFor="exampleQuestion"
+              htmlFor="question"
               className="font-weight-bold mb-2">Question</label>
             <input
+              id="question"
               name="question"
               type="question"
               className="form-control"
@@ -52,9 +53,10 @@ export default class Form extends React.Component {
          </div>
           <div className="form-group">
             <label
-              htmlFor="exampleAnswer"
+              htmlFor="answer"
               className="font-weight-bold mb-2">Answer</label>
             <input
+              id="answer"
               name="answer"
               type="answer"
               className="form-control"
@@ -63,7 +65,7 @@ export default class Form extends React.Component {
           </div>
             <div className="mt-5 flex text-center">
           <button
-            type="save"
+            type="submit"
             className="btn btn-info">Save</button>
             </div>
         </div>
