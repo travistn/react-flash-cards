@@ -4,7 +4,7 @@ export default function Form(props) {
   return (
     <form
       onSubmit={props.onSubmit}
-      className="card form-container">
+      className="card form-container shadow">
       <div className="card-body">
         <div className="form-group">
           <label htmlFor="exampleQuestion">Question</label>
@@ -27,7 +27,7 @@ export default function Form(props) {
           <div className="btn-div">
         <button
           type="save"
-          className="btn btn-primary save-btn">Save</button>
+          className="btn btn-primary">Save</button>
           </div>
       </div>
     </form>

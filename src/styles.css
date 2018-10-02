@@ -1,0 +1,22 @@
+.form-container {
+  width: 30rem;
+  padding: 2rem;
+  position: absolute;
+  top: 10rem;
+  left: 20rem;
+  border: 0.1rem solid;
+}
+
+.btn-div {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.form-container::before {
+  content: 'Create a Flash Card';
+  position: absolute;
+  background: white;
+  transform: translate(-50%, -50%);
+  top: 0;
+  left: 5rem;
+}
