@@ -9,6 +9,7 @@ export default class App extends React.Component {
       answer: ''
     }
     this.handleChange = this.handleChange.bind(this)
+    this.handleSave = this.handleSave.bind(this)
   }
   handleChange(event) {
     const form = event.target
@@ -16,13 +17,18 @@ export default class App extends React.Component {
       [form.name]: form.value
     })
   }
+  handleSave(event) {
+    event.preventDefault()
+    console.log(this.state)
+  }
   render () {
-    const {name, value} = this.state
+    const {value} = this.state
     return (
       <Form
-        name={name}
         value={value}
-        onChange={this.handleChange}/>
+        onChange={this.handleChange}
+        onSubmit={this.handleSave}
+        />
     )
   }
 }
