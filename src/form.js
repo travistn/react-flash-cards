@@ -27,7 +27,8 @@ export default class Form extends React.Component {
   }
   handleSave(event) {
     event.preventDefault()
-    console.log(this.state)
+    const card = Object.assign({}, this.state)
+    this.props.onSubmit(card)
     event.target.reset()
   }
   render () {
