@@ -10,9 +10,12 @@ export default class App extends React.Component {
     const {path} = hash.parse(location.hash)
     this.state = {
       flashcards: [],
-      view: {path}
+      view: {
+        path: {path}
+      }
     }
     this.addCard = this.addCard.bind(this)
+    this.cardView = this.cardView.bind(this)
   }
   addCard(newCard) {
     const card = Object.assign({}, newCard)
@@ -21,13 +24,22 @@ export default class App extends React.Component {
       flashcards: cards
     })
   }
+  cardView() {
+    this.setState({
+      view: {
+        path: 'new-card'
+      }
+    })
+  }
   renderView() {
     const {path} = this.state.view
     switch (path) {
       case 'new-card':
         return <NewCard onSubmit={this.addCard}/>
       default:
-        return <Cards card={this.state.flashcards.length}/>
+        return <Cards
+          card={this.state.flashcards.length}
+          newCardView={this.cardView}/>
     }
   }
   componentDidMount() {
