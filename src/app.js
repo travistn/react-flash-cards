@@ -39,6 +39,7 @@ export default class App extends React.Component {
       default:
         return <Cards
           card={this.state.flashcards.length}
+          cards={this.state.flashcards}
           newCardView={this.cardView}/>
     }
   }

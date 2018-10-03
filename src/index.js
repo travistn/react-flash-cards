@@ -1,8 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import NavBar from './nav-bar'
+import App from './app'
 
 ReactDOM.render(
-  <NavBar />,
+  <App />,
   document.getElementById('root')
 )
