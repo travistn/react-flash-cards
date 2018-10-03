@@ -1,10 +1,11 @@
 import React from 'react'
 import Form from './form'
 
-export default function NewCard() {
+export default function NewCard(props) {
   return (
     <div>
-      <Form />
+      <Form
+        onSubmit={props.onSubmit}/>
     </div>
   )
 }

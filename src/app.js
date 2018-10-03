@@ -1,21 +1,18 @@
 import React from 'react'
-import Form from './form'
 import NavBar from './nav-bar'
 import Cards from './cards'
 import NewCard from './new-card'
+import hash from './hash'
 
 export default class App extends React.Component {
   constructor(props) {
     super(props)
+    const {path} = hash.parse(location.hash)
     this.state = {
       flashcards: [],
-      view: {
-        path: '',
-        params: {}
-      }
+      view: {path}
     }
     this.addCard = this.addCard.bind(this)
-    this.renderView = this.renderView.bind(this)
   }
   addCard(newCard) {
     const card = Object.assign({}, newCard)
@@ -25,21 +22,27 @@ export default class App extends React.Component {
     })
   }
   renderView() {
-    const {path, params} = this.state.view
+    const {path} = this.state.view
     switch (path) {
       case 'new-card':
-        return <NewCard/>
+        return <NewCard onSubmit={this.addCard}/>
       default:
         return <Cards/>
     }
+  }
+  componentDidMount() {
+    window.addEventListener('hashchange', () => {
+      const {path} = hash.parse(location.hash)
+      this.setState({
+        view: {path}
+      })
+    })
   }
   render () {
     return (
       <div>
         <NavBar/>
-          {this.renderView}
-        <Form
-          onSubmit={this.addCard}/>
+          {this.renderView()}
       </div>
     )
   }
