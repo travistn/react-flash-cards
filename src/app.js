@@ -15,7 +15,7 @@ export default class App extends React.Component {
     this.setState({
       flashcards: cards
     })
-    console.log(cards)
+    console.log(this.state)
   }
   render () {
     return (
