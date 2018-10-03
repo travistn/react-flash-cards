@@ -27,7 +27,7 @@ export default class App extends React.Component {
       case 'new-card':
         return <NewCard onSubmit={this.addCard}/>
       default:
-        return <Cards/>
+        return <Cards card={this.state.flashcards.length}/>
     }
   }
   componentDidMount() {
