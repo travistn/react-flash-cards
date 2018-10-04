@@ -5,7 +5,8 @@ const styles = {
     color: 'white'
   },
   edit: {
-    cursor: 'pointer'
+    cursor: 'pointer',
+    color: 'black'
   }
 }
 

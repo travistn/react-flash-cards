@@ -9,9 +9,11 @@ const styles = {
 export default class Form extends React.Component {
   constructor(props) {
     super(props)
+    const {cardId} = this.props
     this.state = {
       question: '',
-      answer: ''
+      answer: '',
+      id: cardId
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSave = this.handleSave.bind(this)
