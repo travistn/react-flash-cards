@@ -8,8 +8,10 @@ export default class App extends React.Component {
   constructor(props) {
     super(props)
     const {path} = hash.parse(location.hash)
+    const stateJson = localStorage.getItem('flashcards-app-state')
+    const appState = JSON.parse(stateJson) || {}
     this.state = {
-      flashcards: [],
+      flashcards: appState.flashcards || [],
       view: {path}
     }
     this.addCard = this.addCard.bind(this)
@@ -39,8 +41,8 @@ export default class App extends React.Component {
       })
     })
     window.addEventListener('beforeunload', () => {
-      const {cards} = this.state
-      const stateJson = JSON.stringify({ cards })
+      const { flashcards } = this.state
+      const stateJson = JSON.stringify({ flashcards })
       localStorage.setItem('flashcards-app-state', stateJson)
     })
   }
