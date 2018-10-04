@@ -10,9 +10,7 @@ export default class App extends React.Component {
     const {path} = hash.parse(location.hash)
     this.state = {
       flashcards: [],
-      view: {
-        path: {path}
-      }
+      view: {path}
     }
     this.addCard = this.addCard.bind(this)
   }
@@ -39,6 +37,11 @@ export default class App extends React.Component {
       this.setState({
         view: {path}
       })
+    })
+    window.addEventListener('beforeunload', () => {
+      const {cards} = this.state
+      const stateJson = JSON.stringify({ cards })
+      localStorage.setItem('flashcards-app-state', stateJson)
     })
   }
   render() {
