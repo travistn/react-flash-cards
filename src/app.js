@@ -3,6 +3,7 @@ import NavBar from './nav-bar'
 import Cards from './cards'
 import NewCard from './new-card'
 import hash from './hash'
+import Edit from './edit'
 
 export default class App extends React.Component {
   constructor(props) {
@@ -28,6 +29,8 @@ export default class App extends React.Component {
     switch (path) {
       case 'new-card':
         return <NewCard onSubmit={this.addCard}/>
+      case 'edit':
+        return <Edit/>
       default:
         return <Cards
           cards={this.state.flashcards}/>
