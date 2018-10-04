@@ -38,6 +38,7 @@ export default class Cards extends React.Component {
                     <div className="card-body">
                       <p className="card-text">{card.question}</p>
                       <p className="card-text">{card.answer}</p>
+                      <p><i className="fas fa-pencil-alt float-right"></i></p>
                     </div>
                   </div>
                 )
