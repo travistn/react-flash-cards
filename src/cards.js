@@ -1,8 +1,14 @@
 import React from 'react'
 
+const styles = {
+  button: {
+    color: 'white'
+  }
+}
+
 export default class Cards extends React.Component {
   render() {
-    if (this.props.card === 0) {
+    if (this.props.cards.length === 0) {
       return (
         <div className="d-flex justify-content-center mt-5">
           <div
@@ -10,13 +16,16 @@ export default class Cards extends React.Component {
             <div className="h2">You have no flash cards.</div>
             <button
               type="button"
-              className="btn btn-info mt-5"
-              onClick={this.props.newCardView}>Make one</button>
+              className="btn btn-info mt-5">
+              <a
+                href="#new-card"
+                style={styles.button}>Make One</a>
+            </button>
           </div>
         </div>
       )
     }
-    if (this.props.card > 0) {
+    if (this.props.cards.length > 0) {
       return (
         <div className="container">
           <div className="row text-center mt-3">
@@ -25,7 +34,7 @@ export default class Cards extends React.Component {
                 return (
                   <div
                     key={index}
-                    className="card m-2">
+                    className="card shadow m-2 mt-3 w-25 border-light">
                     <div className="card-body">
                       <p className="card-text">{card.question}</p>
                       <p className="card-text">{card.answer}</p>

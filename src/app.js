@@ -15,20 +15,12 @@ export default class App extends React.Component {
       }
     }
     this.addCard = this.addCard.bind(this)
-    this.cardView = this.cardView.bind(this)
   }
   addCard(newCard) {
     const card = Object.assign({}, newCard)
     const cards = [...this.state.flashcards, card]
     this.setState({
       flashcards: cards
-    })
-  }
-  cardView() {
-    this.setState({
-      view: {
-        path: 'new-card'
-      }
     })
   }
   renderView() {
@@ -38,9 +30,7 @@ export default class App extends React.Component {
         return <NewCard onSubmit={this.addCard}/>
       default:
         return <Cards
-          card={this.state.flashcards.length}
-          cards={this.state.flashcards}
-          newCardView={this.cardView}/>
+          cards={this.state.flashcards}/>
     }
   }
   componentDidMount() {
@@ -51,11 +41,11 @@ export default class App extends React.Component {
       })
     })
   }
-  render () {
+  render() {
     return (
       <div>
         <NavBar/>
-          {this.renderView()}
+        {this.renderView()}
       </div>
     )
   }
