@@ -35,15 +35,18 @@ export default class Cards extends React.Component {
           <div className="row text-center mt-3">
             {
               this.props.cards.map((card, index) => {
+                const id = card.id
+                const url = `#edit?cardId=${id}`
                 return (
                   <div
+                    id={id}
                     key={index}
                     className="card shadow m-2 mt-3 w-25 border-light">
                     <div className="card-body">
                       <p className="card-text">{card.question}</p>
                       <p className="card-text">{card.answer}</p>
                       <p>
-                        <a href="#edit">
+                        <a href={url}>
                           <i
                             className="fas fa-pencil-alt float-right"
                             style={styles.edit}></i>

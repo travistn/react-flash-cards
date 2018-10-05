@@ -12,7 +12,8 @@ export default class Edit extends React.Component {
       <div className="d-flex justify-content-center mt-5">
         <form
           className="card shadow p-2 border-info rounded"
-          style={styles.form}>
+          style={styles.form}
+          id={this.props}>
           <div className="card-body">
             <p className="h3 mb-5 font-weight-light text-center">Edit a Flash Card</p>
             <div className="form-group">

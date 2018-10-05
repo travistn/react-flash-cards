@@ -13,6 +13,7 @@ export default class App extends React.Component {
     const appState = JSON.parse(stateJson) || {}
     this.state = {
       flashcards: appState.flashcards || [],
+      cardId: appState.cardId || 0,
       view: {path}
     }
     this.addCard = this.addCard.bind(this)
@@ -21,16 +22,17 @@ export default class App extends React.Component {
     const card = Object.assign({}, newCard)
     const cards = [...this.state.flashcards, card]
     this.setState({
-      flashcards: cards
+      flashcards: cards,
+      cardId: this.state.cardId + 1
     })
   }
   renderView() {
     const {path} = this.state.view
     switch (path) {
       case 'new-card':
-        return <NewCard onSubmit={this.addCard}/>
+        return <NewCard onSubmit={this.addCard} cardId={this.state.cardId}/>
       case 'edit':
-        return <Edit/>
+        return <Edit id={this.state.cardId}/>
       default:
         return <Cards
           cards={this.state.flashcards}/>
@@ -44,8 +46,8 @@ export default class App extends React.Component {
       })
     })
     window.addEventListener('beforeunload', () => {
-      const { flashcards } = this.state
-      const stateJson = JSON.stringify({ flashcards })
+      const { flashcards, cardId } = this.state
+      const stateJson = JSON.stringify({ flashcards, cardId })
       localStorage.setItem('flashcards-app-state', stateJson)
     })
   }

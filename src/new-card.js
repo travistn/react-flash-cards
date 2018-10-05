@@ -5,7 +5,8 @@ export default function NewCard(props) {
   return (
     <div>
       <Form
-        onSubmit={props.onSubmit}/>
+        onSubmit={props.onSubmit}
+        cardId={props.cardId}/>
     </div>
   )
 }
