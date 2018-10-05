@@ -8,13 +8,13 @@ import Edit from './edit'
 export default class App extends React.Component {
   constructor(props) {
     super(props)
-    const {path} = hash.parse(location.hash)
+    const {path, params} = hash.parse(location.hash)
     const stateJson = localStorage.getItem('flashcards-app-state')
     const appState = JSON.parse(stateJson) || {}
     this.state = {
       flashcards: appState.flashcards || [],
       cardId: appState.cardId || 0,
-      view: {path}
+      view: {path, params}
     }
     this.addCard = this.addCard.bind(this)
   }
@@ -27,12 +27,14 @@ export default class App extends React.Component {
     })
   }
   renderView() {
-    const {path} = this.state.view
+    const {path, params} = this.state.view
     switch (path) {
       case 'new-card':
         return <NewCard onSubmit={this.addCard} cardId={this.state.cardId}/>
       case 'edit':
-        return <Edit id={this.state.cardId}/>
+        const flashcard = this.state.flashcards.find(card =>
+          card.id === parseInt(params.cardId, 10))
+        return <Edit findCard={flashcard}/>
       default:
         return <Cards
           cards={this.state.flashcards}/>
@@ -40,9 +42,9 @@ export default class App extends React.Component {
   }
   componentDidMount() {
     window.addEventListener('hashchange', () => {
-      const {path} = hash.parse(location.hash)
+      const {path, params} = hash.parse(location.hash)
       this.setState({
-        view: {path}
+        view: {path, params}
       })
     })
     window.addEventListener('beforeunload', () => {

@@ -6,14 +6,12 @@ const styles = {
   }
 }
 
-export default class Edit extends React.Component {
-  render() {
+export default function Edit(props) {
     return (
       <div className="d-flex justify-content-center mt-5">
         <form
           className="card shadow p-2 border-info rounded"
-          style={styles.form}
-          id={this.props}>
+          style={styles.form}>
           <div className="card-body">
             <p className="h3 mb-5 font-weight-light text-center">Edit a Flash Card</p>
             <div className="form-group">
@@ -24,7 +22,8 @@ export default class Edit extends React.Component {
                 id="question"
                 name="question"
                 type="question"
-                className="form-control"/>
+                className="form-control"
+                defaultValue={props.findCard.question}/>
             </div>
             <div className="form-group">
               <label
@@ -34,7 +33,8 @@ export default class Edit extends React.Component {
                 id="answer"
                 name="answer"
                 type="answer"
-                className="form-control"/>
+                className="form-control"
+                defaultValue={props.findCard.answer} />
             </div>
             <div className="mt-5 flex text-center">
               <button
@@ -46,4 +46,3 @@ export default class Edit extends React.Component {
       </div>
     )
   }
-}
