@@ -6,7 +6,17 @@ const styles = {
   }
 }
 
-export default function Edit(props) {
+export default class Edit extends React.Component {
+  editCard(event) {
+    const card = event.target
+    const cardId = parseInt(this.props.flashcard.id, 10)
+    this.setState({
+      [card.name]: card.value,
+      id: cardId
+    })
+    this.props.editCard()
+  }
+  render() {
     return (
       <div className="d-flex justify-content-center mt-5">
         <form
@@ -23,7 +33,7 @@ export default function Edit(props) {
                 name="question"
                 type="question"
                 className="form-control"
-                defaultValue={props.findCard.question}/>
+                defaultValue={this.props.findCard.question}/>
             </div>
             <div className="form-group">
               <label
@@ -34,7 +44,7 @@ export default function Edit(props) {
                 name="answer"
                 type="answer"
                 className="form-control"
-                defaultValue={props.findCard.answer} />
+                defaultValue={this.props.findCard.answer} />
             </div>
             <div className="mt-5 flex text-center">
               <button
@@ -46,3 +56,4 @@ export default function Edit(props) {
       </div>
     )
   }
+}
