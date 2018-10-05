@@ -17,6 +17,7 @@ export default class App extends React.Component {
       view: {path, params}
     }
     this.addCard = this.addCard.bind(this)
+    this.editCard = this.editCard.bind(this)
   }
   addCard(newCard) {
     const card = Object.assign({}, newCard)
@@ -26,6 +27,22 @@ export default class App extends React.Component {
       cardId: this.state.cardId + 1
     })
   }
+  editCard(newCard) {
+    const {flashcards} = this.state
+    const cardId = parseInt(this.state.view.params.cardId, 10)
+    const flashcardList = flashcards.map(card => {
+      if (cardId === card.id) {
+        return newCard
+      }
+      else {
+        return card
+      }
+    })
+    this.setState({
+      flashcards: flashcardList
+    })
+    location.hash = '#cards'
+  }
   renderView() {
     const {path, params} = this.state.view
     switch (path) {
@@ -34,10 +51,9 @@ export default class App extends React.Component {
       case 'edit':
         const flashcard = this.state.flashcards.find(card =>
           card.id === parseInt(params.cardId, 10))
-        return <Edit findCard={flashcard}/>
+        return <Edit findCard={flashcard} onSubmit={this.editCard}/>
       default:
-        return <Cards
-          cards={this.state.flashcards}/>
+        return <Cards cards={this.state.flashcards}/>
     }
   }
   componentDidMount() {

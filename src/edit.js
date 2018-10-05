@@ -7,19 +7,32 @@ const styles = {
 }
 
 export default class Edit extends React.Component {
-  editCard(event) {
-    const card = event.target
-    const cardId = parseInt(this.props.flashcard.id, 10)
+  constructor(props) {
+    super(props)
+    this.state = {
+      question: this.props.findCard.question,
+      answer: this.props.findCard.answer,
+      id: this.props.findCard.id
+    }
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSave = this.handleSave.bind(this)
+  }
+  handleChange(event) {
+    const form = event.target
     this.setState({
-      [card.name]: card.value,
-      id: cardId
+      [form.name]: form.value
     })
-    this.props.editCard()
+  }
+  handleSave(event) {
+    event.preventDefault()
+    const card = Object.assign({}, this.state)
+    this.props.onSubmit(card)
   }
   render() {
     return (
       <div className="d-flex justify-content-center mt-5">
         <form
+          onSubmit={this.handleSave}
           className="card shadow p-2 border-info rounded"
           style={styles.form}>
           <div className="card-body">
@@ -33,7 +46,8 @@ export default class Edit extends React.Component {
                 name="question"
                 type="question"
                 className="form-control"
-                defaultValue={this.props.findCard.question}/>
+                value={this.state.question}
+                onChange={this.handleChange}/>
             </div>
             <div className="form-group">
               <label
@@ -44,7 +58,8 @@ export default class Edit extends React.Component {
                 name="answer"
                 type="answer"
                 className="form-control"
-                defaultValue={this.props.findCard.answer} />
+                value={this.state.answer}
+                onChange={this.handleChange}/>
             </div>
             <div className="mt-5 flex text-center">
               <button
