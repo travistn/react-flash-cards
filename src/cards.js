@@ -4,7 +4,7 @@ const styles = {
   button: {
     color: 'white'
   },
-  edit: {
+  icon: {
     cursor: 'pointer',
     color: 'black'
   }
@@ -45,13 +45,17 @@ export default class Cards extends React.Component {
                     <div className="card-body">
                       <p className="card-text">{card.question}</p>
                       <p className="card-text">{card.answer}</p>
-                      <p>
+                      <span className="float-right">
                         <a href={url}>
                           <i
-                            className="fas fa-pencil-alt float-right"
-                            style={styles.edit}></i>
+                            className="fas fa-pencil-alt mr-4"
+                            style={styles.icon}></i>
                         </a>
-                      </p>
+                        <i
+                          className="fas fa-trash-alt"
+                          style={styles.icon}
+                          onClick={this.props.onClick}></i>
+                      </span>
                     </div>
                   </div>
                 )
