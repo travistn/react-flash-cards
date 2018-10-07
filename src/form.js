@@ -29,6 +29,7 @@ export default class Form extends React.Component {
     const card = Object.assign({}, this.state)
     this.props.onSubmit(card)
     event.target.reset()
+    window.location.reload()
   }
   render() {
     const {value} = this.state
