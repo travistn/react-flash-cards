@@ -4,6 +4,7 @@ import NavBar from './nav-bar'
 import Cards from './cards'
 import hash from './hash'
 import Edit from './edit'
+import Practice from './practice'
 
 export default class App extends React.Component {
   constructor(props) {
@@ -58,6 +59,8 @@ export default class App extends React.Component {
         const flashcard = this.state.flashcards.find(card =>
           card.id === parseInt(params.cardId, 10))
         return <Edit findCard={flashcard} onSubmit={this.editCard}/>
+      case 'practice':
+        return <Practice findCard={flashcard}/>
       default:
         return <Cards cards={this.state.flashcards} deleteCard={this.deleteCard}/>
     }
