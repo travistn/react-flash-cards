@@ -17,6 +17,9 @@ export default function NavBar() {
             <li className="nav-item">
               <a className="nav-link" href="#new-card">Make a New Card</a>
             </li>
+            <li className="nav-item">
+              <a className="nav-link" href="#practice">Practice</a>
+            </li>
           </ul>
         </div>
       </nav>
