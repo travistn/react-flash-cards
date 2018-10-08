@@ -52,6 +52,7 @@ export default class App extends React.Component {
   }
   renderView() {
     const {path, params} = this.state.view
+    const {flashcards} = this.state
     switch (path) {
       case 'new-card':
         return <Form onSubmit={this.addCard} cardId={this.state.cardId}/>
@@ -60,7 +61,7 @@ export default class App extends React.Component {
           card.id === parseInt(params.cardId, 10))
         return <Edit findCard={flashcard} onSubmit={this.editCard}/>
       case 'practice':
-        return <Practice findCard={flashcard}/>
+        return <Practice cards={flashcards}/>
       default:
         return <Cards cards={this.state.flashcards} deleteCard={this.deleteCard}/>
     }
