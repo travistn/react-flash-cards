@@ -22,17 +22,32 @@ export default class Practice extends React.Component {
     })
   }
   changeCard(direction) {
+    const {cards} = this.props
     const index = this.state.currentCard
     switch (direction) {
       case 'left':
-        this.setState({
-          currentCard: index - 1
-        })
+        if (index === 0) {
+          this.setState({
+            currentCard: cards.length - 1
+          })
+        }
+        else {
+          this.setState({
+            currentCard: index - 1
+          })
+        }
         break
       case 'right':
-        this.setState({
-          currentCard: index + 1
-        })
+        if (index === cards.length - 1) {
+          this.setState({
+            currentCard: 0
+          })
+        }
+        else {
+          this.setState({
+            currentCard: index + 1
+          })
+        }
     }
   }
   render() {
@@ -42,11 +57,11 @@ export default class Practice extends React.Component {
       <div className="d-flex justify-content-center mt-5">
         <span>
           <i
-            className="fas fa-angle-double-left arrow mr-3"
+            className="fas fa-angle-double-left arrow mr-3 mt-4"
             onClick={() => this.changeCard('left')}
             style={styles.arrow}></i>
         </span>
-        <div className="card">
+        <div className="card w-50 text-center">
           <div className="card-body">
             <h5 className="card-title">{cards[currentCard].question}</h5>
             <p className="card-text"></p>
@@ -54,7 +69,7 @@ export default class Practice extends React.Component {
         </div>
         <span>
           <i
-            className="fas fa-angle-double-right arrow ml-3"
+            className="fas fa-angle-double-right arrow ml-3 mt-4"
             onClick={() => this.changeCard('right')}
             style={styles.arrow}></i>
         </span>
