@@ -39,7 +39,6 @@ export default class Cards extends React.Component {
                 const url = `#edit?cardId=${id}`
                 return (
                   <div
-                    id={id}
                     key={index}
                     className="card shadow m-2 mt-3 w-25 border-light">
                     <div className="card-body">
@@ -54,7 +53,8 @@ export default class Cards extends React.Component {
                         <i
                           className="fas fa-trash-alt"
                           style={styles.icon}
-                          onClick={this.props.onClick}></i>
+                          onClick={this.props.deleteCard}
+                          id={id}></i>
                       </span>
                     </div>
                   </div>

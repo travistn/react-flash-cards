@@ -28,12 +28,10 @@ export default class App extends React.Component {
       cardId: this.state.cardId + 1
     })
   }
-  deleteCard() {
-    const id = this.state.flashcards.findIndex(card => card.id)
-    const cards = [...this.state.flashcards]
-    cards.splice(id, 1)
-    this.setState({ flashcards: cards })
-    localStorage.setItem('flashcards-app-state', JSON.stringify(cards))
+  deleteCard(event) {
+    const id = parseInt(event.target.id, 10)
+    const flashcards = [...this.state.flashcards].filter(card => card.id !== id)
+    this.setState({ flashcards })
   }
   editCard(newCard) {
     const {flashcards} = this.state
@@ -61,7 +59,7 @@ export default class App extends React.Component {
           card.id === parseInt(params.cardId, 10))
         return <Edit findCard={flashcard} onSubmit={this.editCard}/>
       default:
-        return <Cards cards={this.state.flashcards} onClick={this.deleteCard}/>
+        return <Cards cards={this.state.flashcards} deleteCard={this.deleteCard}/>
     }
   }
   componentDidMount() {
