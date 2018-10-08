@@ -3,6 +3,11 @@ import React from 'react'
 const styles = {
   arrow: {
     cursor: 'pointer'
+  },
+  leftArrow: {
+    position: 'relative',
+    right: '43rem',
+    top: '5rem'
   }
 }
 
@@ -58,18 +63,21 @@ export default class Practice extends React.Component {
     if (answerIsShown) {
       answerIcon += ' rotate '
     }
+    const progress = (currentCard + 1) / cards.length * 100
     return (
-      <div className="d-flex justify-content-center mt-5">
-        <div className="progress">
+      <div className="d-flex flex-wrap justify-content-center mt-5">
+        <div className="progress w-50">
           <div
             className="progress-bar progress-bar-striped bg-info"
-            role="progressbar">
+            role="progressbar"
+            style={{width: progress + '%'}}>
           </div>
         </div>
-        <span>
+        <span className="align-content-left">
           <i
             className="fas fa-angle-double-left arrow mr-3 mt-5"
-            onClick={() => this.changeCard('left')}></i>
+            onClick={() => this.changeCard('left')}
+            style={styles.leftArrow}></i>
         </span>
         <div className="card w-50 text-center shadow border-light">
           <div className="card-body">
