@@ -1,7 +1,7 @@
 import React from 'react'
+import Form from './form'
 import NavBar from './nav-bar'
 import Cards from './cards'
-import NewCard from './new-card'
 import hash from './hash'
 import Edit from './edit'
 
@@ -13,7 +13,7 @@ export default class App extends React.Component {
     const appState = JSON.parse(stateJson) || {}
     this.state = {
       flashcards: appState.flashcards || [],
-      cardId: appState.cardId || 0,
+      cardId: appState.cardId || 1,
       view: {path, params}
     }
     this.addCard = this.addCard.bind(this)
@@ -21,7 +21,7 @@ export default class App extends React.Component {
     this.deleteCard = this.deleteCard.bind(this)
   }
   addCard(newCard) {
-    const card = Object.assign({}, newCard)
+    const card = Object.assign({}, newCard, {id: this.state.cardId})
     const cards = [...this.state.flashcards, card]
     this.setState({
       flashcards: cards,
@@ -53,7 +53,7 @@ export default class App extends React.Component {
     const {path, params} = this.state.view
     switch (path) {
       case 'new-card':
-        return <NewCard onSubmit={this.addCard} cardId={this.state.cardId}/>
+        return <Form onSubmit={this.addCard} cardId={this.state.cardId}/>
       case 'edit':
         const flashcard = this.state.flashcards.find(card =>
           card.id === parseInt(params.cardId, 10))

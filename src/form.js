@@ -9,11 +9,9 @@ const styles = {
 export default class Form extends React.Component {
   constructor(props) {
     super(props)
-    const {cardId} = this.props
     this.state = {
       question: '',
-      answer: '',
-      id: cardId
+      answer: ''
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSave = this.handleSave.bind(this)
@@ -25,11 +23,10 @@ export default class Form extends React.Component {
     })
   }
   handleSave(event) {
-    event.preventDefault()
     const card = Object.assign({}, this.state)
     this.props.onSubmit(card)
+    event.preventDefault()
     event.target.reset()
-    window.location.reload()
   }
   render() {
     const {value} = this.state
