@@ -52,26 +52,35 @@ export default class Practice extends React.Component {
   }
   render() {
     const {cards} = this.props
+    const {answerIsShown} = this.state
     const currentCard = this.state.currentCard
+    let answerIcon = 'fas fa-chevron-circle-right mr-2'
+    if (answerIsShown) {
+      answerIcon += ' rotate '
+    }
     return (
       <div className="d-flex justify-content-center mt-5">
         <span>
           <i
-            className="fas fa-angle-double-left arrow mr-3 mt-4"
-            onClick={() => this.changeCard('left')}
-            style={styles.arrow}></i>
+            className="fas fa-angle-double-left arrow mr-3 mt-5"
+            onClick={() => this.changeCard('left')}></i>
         </span>
-        <div className="card w-50 text-center">
+        <div className="card w-50 text-center shadow border-light">
           <div className="card-body">
-            <h5 className="card-title">{cards[currentCard].question}</h5>
-            <p className="card-text"></p>
+            <h5 className="card-title mt-3">{cards[currentCard].question}</h5>
+            <p className="card-text mt-4">
+              <i
+                className={answerIcon}
+                onClick={this.handleToggle}
+                style={styles.arrow}></i>
+              Show Answer</p>
+            <p className={answerIsShown ? 'is-shown' : 'hidden'}>{cards[currentCard].answer}</p>
           </div>
         </div>
         <span>
           <i
-            className="fas fa-angle-double-right arrow ml-3 mt-4"
-            onClick={() => this.changeCard('right')}
-            style={styles.arrow}></i>
+            className="fas fa-angle-double-right arrow ml-3 mt-5"
+            onClick={() => this.changeCard('right')}></i>
         </span>
       </div>
     )
