@@ -60,6 +60,12 @@ export default class Practice extends React.Component {
     }
     return (
       <div className="d-flex justify-content-center mt-5">
+        <div className="progress">
+          <div
+            className="progress-bar progress-bar-striped bg-info"
+            role="progressbar">
+          </div>
+        </div>
         <span>
           <i
             className="fas fa-angle-double-left arrow mr-3 mt-5"
