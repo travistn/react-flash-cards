@@ -12,7 +12,8 @@ export default class Edit extends React.Component {
     this.state = {
       question: this.props.findCard.question,
       answer: this.props.findCard.answer,
-      id: this.props.findCard.id
+      id: this.props.findCard.id,
+      topic: this.props.findCard.topic
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSave = this.handleSave.bind(this)
@@ -59,6 +60,18 @@ export default class Edit extends React.Component {
                 type="answer"
                 className="form-control"
                 value={this.state.answer}
+                onChange={this.handleChange}/>
+            </div>
+            <div className="form-group">
+              <label
+                htmlFor="topic"
+                className="font-weight-bold mb-2">Topic</label>
+              <input
+                id="topic"
+                name="topic"
+                type="topic"
+                className="form-control"
+                value={this.state.topic}
                 onChange={this.handleChange}/>
             </div>
             <div className="mt-5 flex text-center">
