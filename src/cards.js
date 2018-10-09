@@ -32,6 +32,13 @@ export default class Cards extends React.Component {
     if (this.props.cards.length > 0) {
       return (
         <div className="container">
+          <div className="btn-group float-right">
+            <button
+              type="button"
+              className="btn btn-info dropdown-toggle"
+              data-toggle="dropdown">Filter
+            </button>
+          </div>
           <div className="row text-center mt-3">
             {
               this.props.cards.map((card, index) => {
@@ -42,7 +49,7 @@ export default class Cards extends React.Component {
                 return (
                   <div
                     key={index}
-                    className="card shadow m-2 mt-3 w-25 border-light">
+                    className="card shadow m-4 mt-3 w-25 border-light">
                     <div className="card-body">
                       <p className="card-text">{card.question}</p>
                       <p className="card-text">{card.answer}</p>
