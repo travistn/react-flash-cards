@@ -11,7 +11,8 @@ export default class Form extends React.Component {
     super(props)
     this.state = {
       question: '',
-      answer: ''
+      answer: '',
+      topic: ''
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSave = this.handleSave.bind(this)
@@ -58,6 +59,18 @@ export default class Form extends React.Component {
                 id="answer"
                 name="answer"
                 type="answer"
+                className="form-control"
+                value={value}
+                onChange={this.handleChange}/>
+            </div>
+            <div className="form-group">
+              <label
+                htmlFor="topic"
+                className="font-weight-bold mb-2">Topic</label>
+              <input
+                id="topic"
+                name="topic"
+                type="topic"
                 className="form-control"
                 value={value}
                 onChange={this.handleChange}/>

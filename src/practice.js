@@ -6,7 +6,7 @@ const styles = {
   },
   leftArrow: {
     position: 'relative',
-    right: '43rem',
+    right: '48rem',
     top: '5rem'
   }
 }
@@ -68,12 +68,12 @@ export default class Practice extends React.Component {
       <div className="d-flex flex-wrap justify-content-center mt-5">
         <div className="progress w-50">
           <div
-            className="progress-bar progress-bar-striped bg-info"
+            className="progress-bar progress-bar-striped bg-info progress-bar-animated"
             role="progressbar"
             style={{width: progress + '%'}}>
           </div>
         </div>
-        <span className="align-content-left">
+        <span>
           <i
             className="fas fa-angle-double-left arrow mr-3 mt-5"
             onClick={() => this.changeCard('left')}
