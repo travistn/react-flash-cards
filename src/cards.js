@@ -37,6 +37,8 @@ export default class Cards extends React.Component {
               this.props.cards.map((card, index) => {
                 const id = card.id
                 const url = `#edit?cardId=${id}`
+                const topic = card.topic
+                const tag = `#${topic}`
                 return (
                   <div
                     key={index}
@@ -56,6 +58,9 @@ export default class Cards extends React.Component {
                           onClick={this.props.deleteCard}
                           id={id}></i>
                       </span>
+                      <span
+                        className="float-left font-weight-light font-italic tag mt-1">
+                        {tag}</span>
                     </div>
                   </div>
                 )

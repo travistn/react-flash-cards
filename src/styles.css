@@ -5,7 +5,7 @@
 }
 
 .is-shown {
-visibility: visible;
+  visibility: visible;
 }
 
 .arrow {
@@ -15,4 +15,9 @@ visibility: visible;
 
 .rotate {
   transform: rotate(90deg);
+}
+
+.tag {
+  font-size: 14px;
+  color: gray;
 }
