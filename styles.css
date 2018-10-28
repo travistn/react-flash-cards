@@ -1,0 +1,23 @@
+.hidden {
+  visibility: hidden;
+  transition: height 0.25s ease-in-out;
+  height: 0.1rem;
+}
+
+.is-shown {
+  visibility: visible;
+}
+
+.arrow {
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.rotate {
+  transform: rotate(90deg);
+}
+
+.tag {
+  font-size: 14px;
+  color: gray;
+}
