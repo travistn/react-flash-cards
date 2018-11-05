@@ -2,9 +2,13 @@
 
 ### A React.js application for self-learners who want to expand their knowledge.
 
+#### [LiveDemo](https://travistn.github.io/react-flash-cards/)
+
 #### Technologies used to create the project:
-* Visual Studio Code 
-* iTerm2
+* React.js
+* JavaScript
+* HTML5
+* CSS
 
 #### Features:
 
