@@ -41,3 +41,15 @@
 
 **8. User can tag their flash cards by topic.**
 ![add-topic](https://user-images.githubusercontent.com/42354863/46685674-e1ebb580-cbaa-11e8-9f1d-50ce83874a9f.gif)
+
+#### Usage 
+Clone and install dependencies.
+```
+gitclone https://github.com/travistn/react-flash-cards.git
+cd react-flash-cards
+npm install
+````
+Run the app
+```
+npm run dev
+``````
