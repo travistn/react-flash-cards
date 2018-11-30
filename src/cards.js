@@ -1,4 +1,5 @@
 import React from 'react'
+import { Dropdown, DropdownToggle } from 'reactstrap'
 
 const styles = {
   button: {
@@ -11,6 +12,18 @@ const styles = {
 }
 
 export default class Cards extends React.Component {
+  constructor(props) {
+    super(props)
+    this.toggle = this.toggle.bind(this)
+    this.state = {
+      dropdownOpen: false
+    }
+  }
+  toggle() {
+    this.setState(prevState => ({
+      dropdownOpen: !prevState.dropdownOpen
+    }))
+  }
   render() {
     if (this.props.cards.length === 0) {
       return (
@@ -32,6 +45,13 @@ export default class Cards extends React.Component {
     if (this.props.cards.length > 0) {
       return (
         <div className="container">
+          <div className="float-right">
+            <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
+              <DropdownToggle color="info" caret>
+                Filter
+              </DropdownToggle>
+            </Dropdown>
+          </div>
           <div className="row text-center mt-3">
             {
               this.props.cards.map((card, index) => {
