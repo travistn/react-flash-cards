@@ -63,7 +63,8 @@ export default class App extends React.Component {
       case 'practice':
         return <Practice cards={flashcards}/>
       default:
-        return <Cards cards={this.state.flashcards} deleteCard={this.deleteCard}/>
+        return <Cards cards={this.state.flashcards} deleteCard={this.deleteCard}
+          topics={this.state.flashcards}/>
     }
   }
   componentDidMount() {

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Dropdown, DropdownToggle } from 'reactstrap'
+import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap'
 
 const styles = {
   button: {
@@ -50,6 +50,15 @@ export default class Cards extends React.Component {
               <DropdownToggle color="info" caret>
                 Filter
               </DropdownToggle>
+              <DropdownMenu>
+                {
+                  this.props.topics.map((card, index) => {
+                    return (
+                      <DropdownItem key={index}>{card.topic}</DropdownItem>
+                    )
+                  })
+                }
+              </DropdownMenu>
             </Dropdown>
           </div>
           <div className="row text-center mt-3">
