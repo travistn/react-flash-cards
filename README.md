@@ -35,7 +35,7 @@
 
 ![practice-flash-cards](https://user-images.githubusercontent.com/42354863/46634690-8bc53680-cb06-11e8-97ed-f94abc6bd97a.gif)
 
-**7. User can see their progress. **
+**7. User can see their progress.**
 
 ![practice-flash-cards](https://user-images.githubusercontent.com/42354863/46638709-101fb580-cb17-11e8-8829-bce86bdfc92c.gif)
 
