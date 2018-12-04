@@ -15,14 +15,22 @@ export default class Cards extends React.Component {
   constructor(props) {
     super(props)
     this.toggle = this.toggle.bind(this)
+    this.handleChange = this.handleChange.bind(this)
     this.state = {
-      dropdownOpen: false
+      dropdownOpen: false,
+      filterTag: ''
     }
   }
   toggle() {
     this.setState(prevState => ({
       dropdownOpen: !prevState.dropdownOpen
     }))
+  }
+  handleChange(event) {
+    this.setState({
+      filterTag: event.target.value
+    })
+    this.props.onChange(event.target.value)
   }
   render() {
     if (this.props.cards.length === 0) {
@@ -54,7 +62,9 @@ export default class Cards extends React.Component {
                 {
                   this.props.topics.map((card, index) => {
                     return (
-                      <DropdownItem key={index}>{card.topic}</DropdownItem>
+                      <DropdownItem key={index}
+                        value={this.state.filterTag}
+                        onChange={this.handleChange}>{card.topic}</DropdownItem>
                     )
                   })
                 }
