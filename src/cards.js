@@ -1,4 +1,5 @@
 import React from 'react'
+import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap'
 
 const styles = {
   button: {
@@ -18,11 +19,20 @@ export default class Cards extends React.Component {
       tags: []
     }
     this.toggle = this.toggle.bind(this)
+    this.filterTag = this.filterTag.bind(this)
   }
   toggle() {
     this.setState(prevState => ({
       dropdownOpen: !prevState.dropdownOpen
     }))
+  }
+  filterTag(event) {
+    const updatedTopic = this.props.topics.filter(card => {
+      return card.topic.search(event.target.value) !== -1
+    })
+    this.setState({
+      tags: updatedTopic
+    })
   }
   render() {
     if (this.props.cards.length === 0) {
@@ -46,7 +56,7 @@ export default class Cards extends React.Component {
       return (
         <div className="container">
           <div className="float-right">
-            <input type="text" placeholder="Search by tag"></input>
+            <input type="text" placeholder="Search by tag" onChange={this.filterTag}></input>
           </div>
           <div className="row text-center mt-3">
             {
