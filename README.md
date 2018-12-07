@@ -42,6 +42,9 @@
 **8. User can tag their flash cards by topic.**
 ![add-topic](https://user-images.githubusercontent.com/42354863/46685674-e1ebb580-cbaa-11e8-9f1d-50ce83874a9f.gif)
 
+**9. User can filter their flash cards by topic.**
+![filter-by-topic](https://user-images.githubusercontent.com/42354863/49621956-7476be00-f97c-11e8-8113-6c4ec20caeb2.gif)
+
 #### Usage 
 Clone and install dependencies.
 ```
