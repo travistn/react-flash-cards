@@ -16,7 +16,7 @@ export default class Cards extends React.Component {
     super(props)
     this.state = {
       dropdownOpen: false,
-      tags: []
+      tags: this.props.cards
     }
     this.toggle = this.toggle.bind(this)
     this.filterTag = this.filterTag.bind(this)
@@ -60,7 +60,7 @@ export default class Cards extends React.Component {
           </div>
           <div className="row text-center mt-3">
             {
-              this.props.cards.map((card, index) => {
+              this.state.tags.map((card, index) => {
                 const id = card.id
                 const url = `#edit?cardId=${id}`
                 const topic = card.topic
