@@ -1,4 +1,5 @@
 import React from 'react'
+import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap'
 
 const styles = {
   button: {
@@ -11,6 +12,28 @@ const styles = {
 }
 
 export default class Cards extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      dropdownOpen: false,
+      tags: this.props.cards
+    }
+    this.toggle = this.toggle.bind(this)
+    this.filterTag = this.filterTag.bind(this)
+  }
+  toggle() {
+    this.setState(prevState => ({
+      dropdownOpen: !prevState.dropdownOpen
+    }))
+  }
+  filterTag(event) {
+    const updatedTopic = this.props.topics.filter(card => {
+      return card.topic.search(event.target.value) !== -1
+    })
+    this.setState({
+      tags: updatedTopic
+    })
+  }
   render() {
     if (this.props.cards.length === 0) {
       return (
@@ -32,9 +55,12 @@ export default class Cards extends React.Component {
     if (this.props.cards.length > 0) {
       return (
         <div className="container">
+          <div className="float-right">
+            <input type="text" placeholder="Search by tag" onChange={this.filterTag}></input>
+          </div>
           <div className="row text-center mt-3">
             {
-              this.props.cards.map((card, index) => {
+              this.state.tags.map((card, index) => {
                 const id = card.id
                 const url = `#edit?cardId=${id}`
                 const topic = card.topic
