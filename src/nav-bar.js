@@ -1,28 +1,32 @@
 import React from 'react'
+import { Navbar, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap'
+
+const styles = {
+  icon: {
+    color: 'white'
+  },
+  navBar: {
+    color: '#4582EC'
+  }
+}
 
 export default function NavBar() {
   return (
     <div>
-      <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-        <a className="navbar-brand" href="#">
-          <i className="fas fa-brain"></i></a>
-        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className="collapse navbar-collapse" id="navbarColor01">
-          <ul className="navbar-nav mr-auto">
-            <li className="nav-item">
-              <a className="nav-link" href="#cards">Cards</a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#new-card">Make a New Card</a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" href="#practice">Practice</a>
-            </li>
-          </ul>
-        </div>
-      </nav>
+      <Navbar color='primary' light expand="md">
+        <NavbarBrand href="#cards" style={styles.icon}><i className="fas fa-brain"/></NavbarBrand>
+        <Nav>
+          <NavItem>
+            <NavLink href="#cards" style={styles.icon}>Cards</NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink href="#new-card" style={styles.icon}>Make a New Card</NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink href="#practice" style={styles.icon}>Practice</NavLink>
+          </NavItem>
+        </Nav>
+      </Navbar>
     </div>
   )
 }
