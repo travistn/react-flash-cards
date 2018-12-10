@@ -8,6 +8,9 @@ const styles = {
     position: 'relative',
     right: '48rem',
     top: '5rem'
+  },
+  button: {
+    color: 'white'
   }
 }
 
@@ -64,39 +67,58 @@ export default class Practice extends React.Component {
       answerIcon += ' rotate '
     }
     const progress = (currentCard + 1) / cards.length * 100
-    return (
-      <div className="d-flex flex-wrap justify-content-center mt-5">
-        <div className="progress w-50">
+    if (this.props.cards.length === 0) {
+      return (
+        <div className="d-flex justify-content-center mt-5">
           <div
-            className="progress-bar progress-bar-striped bg-info progress-bar-animated"
-            role="progressbar"
-            style={{width: progress + '%'}}>
+            className="text-center mt-3">
+            <div className="h2">You have no flash cards.</div>
+            <button
+              type="button"
+              className="btn btn-info mt-5">
+              <a
+                href="#new-card"
+                style={styles.button}>Make One</a>
+            </button>
           </div>
         </div>
-        <span>
-          <i
-            className="fas fa-angle-double-left arrow mr-3 mt-5"
-            onClick={() => this.changeCard('left')}
-            style={styles.leftArrow}></i>
-        </span>
-        <div className="card w-50 text-center shadow border-light">
-          <div className="card-body">
-            <h5 className="card-title mt-3">{cards[currentCard].question}</h5>
-            <p className="card-text mt-4">
-              <i
-                className={answerIcon}
-                onClick={this.handleToggle}
-                style={styles.arrow}></i>
-              Show Answer</p>
-            <p className={answerIsShown ? 'is-shown' : 'hidden'}>{cards[currentCard].answer}</p>
+      )
+    }
+    if (this.props.cards.length > 0) {
+      return (
+        <div className="d-flex flex-wrap justify-content-center mt-5">
+          <div className="progress w-50">
+            <div
+              className="progress-bar progress-bar-striped bg-info progress-bar-animated"
+              role="progressbar"
+              style={{width: progress + '%'}}>
+            </div>
           </div>
+          <span>
+            <i
+              className="fas fa-angle-double-left arrow mr-3 mt-5"
+              onClick={() => this.changeCard('left')}
+              style={styles.leftArrow}></i>
+          </span>
+          <div className="card w-50 text-center shadow border-light">
+            <div className="card-body">
+              <h5 className="card-title mt-3">{cards[currentCard].question}</h5>
+              <p className="card-text mt-4">
+                <i
+                  className={answerIcon}
+                  onClick={this.handleToggle}
+                  style={styles.arrow}></i>
+                Show Answer</p>
+              <p className={answerIsShown ? 'is-shown' : 'hidden'}>{cards[currentCard].answer}</p>
+            </div>
+          </div>
+          <span>
+            <i
+              className="fas fa-angle-double-right arrow ml-3 mt-5"
+              onClick={() => this.changeCard('right')}></i>
+          </span>
         </div>
-        <span>
-          <i
-            className="fas fa-angle-double-right arrow ml-3 mt-5"
-            onClick={() => this.changeCard('right')}></i>
-        </span>
-      </div>
-    )
+      )
+    }
   }
 }
