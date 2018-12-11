@@ -1,5 +1,5 @@
 import React from 'react'
-import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap'
+import { Container, Row } from 'reactstrap'
 
 const styles = {
   button: {
@@ -8,6 +8,9 @@ const styles = {
   icon: {
     cursor: 'pointer',
     color: 'black'
+  },
+  card: {
+    width: '30%'
   }
 }
 
@@ -54,11 +57,11 @@ export default class Cards extends React.Component {
     }
     if (this.props.cards.length > 0) {
       return (
-        <div className="container">
+        <Container>
           <div className="float-right">
             <input type="text" placeholder="Search by tag" onChange={this.filterTag}></input>
           </div>
-          <div className="row text-center mt-3">
+          <Row className="text-center mt-3">
             {
               this.state.tags.map((card, index) => {
                 const id = card.id
@@ -68,7 +71,7 @@ export default class Cards extends React.Component {
                 return (
                   <div
                     key={index}
-                    className="card shadow m-2 mt-3 w-25 border-light">
+                    className="card shadow m-2 mt-3 border-light flashcard">
                     <div className="card-body">
                       <p className="card-text">{card.question}</p>
                       <p className="card-text">{card.answer}</p>
@@ -92,8 +95,8 @@ export default class Cards extends React.Component {
                 )
               })
             }
-          </div>
-        </div>
+          </Row>
+        </Container>
       )
     }
   }
