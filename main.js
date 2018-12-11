@@ -32029,6 +32029,7 @@ class App extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
       flashcards: cards,
       cardId: this.state.cardId + 1
     });
+    location.hash = '#cards';
   }
 
   deleteCard(event) {
@@ -32150,6 +32151,9 @@ const styles = {
   icon: {
     cursor: 'pointer',
     color: 'black'
+  },
+  card: {
+    width: '30%'
   }
 };
 class Cards extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
@@ -32196,16 +32200,14 @@ class Cards extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
     }
 
     if (this.props.cards.length > 0) {
-      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "container"
-      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Container"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
         className: "float-right"
       }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
         type: "text",
         placeholder: "Search by tag",
         onChange: this.filterTag
-      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-        className: "row text-center mt-3"
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Row"], {
+        className: "text-center mt-3"
       }, this.state.tags.map((card, index) => {
         const id = card.id;
         const url = `#edit?cardId=${id}`;
@@ -32213,7 +32215,7 @@ class Cards extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
         const tag = `#${topic}`;
         return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           key: index,
-          className: "card shadow m-2 mt-3 w-25 border-light"
+          className: "card shadow m-2 mt-3 border-light flashcard"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
           className: "card-body"
         }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
@@ -32517,46 +32519,37 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return NavBar; });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var reactstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! reactstrap */ "./node_modules/reactstrap/dist/reactstrap.es.js");
 
+
+const styles = {
+  icon: {
+    color: 'white'
+  },
+  navBar: {
+    color: '#4582EC'
+  }
+};
 function NavBar() {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
-    className: "navbar navbar-expand-lg navbar-dark bg-primary"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    className: "navbar-brand",
-    href: "#"
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Navbar"], {
+    color: "primary",
+    light: true,
+    expand: "md"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["NavbarBrand"], {
+    href: "#cards",
+    style: styles.icon
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
     className: "fas fa-brain"
-  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    className: "navbar-toggler",
-    type: "button",
-    "data-toggle": "collapse",
-    "data-target": "#navbarColor01",
-    "aria-controls": "navbarColor01",
-    "aria-expanded": "false",
-    "aria-label": "Toggle navigation"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
-    className: "navbar-toggler-icon"
-  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "collapse navbar-collapse",
-    id: "navbarColor01"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
-    className: "navbar-nav mr-auto"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-    className: "nav-item"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    className: "nav-link",
-    href: "#cards"
-  }, "Cards")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-    className: "nav-item"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    className: "nav-link",
-    href: "#new-card"
-  }, "Make a New Card")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
-    className: "nav-item"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
-    className: "nav-link",
-    href: "#practice"
-  }, "Practice"))))));
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["Nav"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["NavItem"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
+    href: "#cards",
+    style: styles.icon
+  }, "Cards")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["NavItem"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
+    href: "#new-card",
+    style: styles.icon
+  }, "Make a New Card")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["NavItem"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(reactstrap__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
+    href: "#practice",
+    style: styles.icon
+  }, "Practice")))));
 }
 
 /***/ }),
@@ -32582,6 +32575,9 @@ const styles = {
     position: 'relative',
     right: '48rem',
     top: '5rem'
+  },
+  button: {
+    color: 'white'
   }
 };
 class Practice extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
@@ -32650,38 +32646,57 @@ class Practice extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {
     }
 
     const progress = (currentCard + 1) / cards.length * 100;
-    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "d-flex flex-wrap justify-content-center mt-5"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "progress w-50"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "progress-bar progress-bar-striped bg-info progress-bar-animated",
-      role: "progressbar",
-      style: {
-        width: progress + '%'
-      }
-    })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-      className: "fas fa-angle-double-left arrow mr-3 mt-5",
-      onClick: () => this.changeCard('left'),
-      style: styles.leftArrow
-    })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "card w-50 text-center shadow border-light"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-      className: "card-body"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
-      className: "card-title mt-3"
-    }, cards[currentCard].question), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-      className: "card-text mt-4"
-    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-      className: answerIcon,
-      onClick: this.handleToggle,
-      style: styles.arrow
-    }), "Show Answer"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
-      className: answerIsShown ? 'is-shown' : 'hidden'
-    }, cards[currentCard].answer))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
-      className: "fas fa-angle-double-right arrow ml-3 mt-5",
-      onClick: () => this.changeCard('right')
-    })));
+
+    if (this.props.cards.length === 0) {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "d-flex justify-content-center mt-5"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "text-center mt-3"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "h2"
+      }, "You have no flash cards."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+        type: "button",
+        className: "btn btn-info mt-5"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+        href: "#new-card",
+        style: styles.button
+      }, "Make One"))));
+    }
+
+    if (this.props.cards.length > 0) {
+      return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "d-flex flex-wrap justify-content-center mt-5"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "progress w-50"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "progress-bar progress-bar-striped bg-info progress-bar-animated",
+        role: "progressbar",
+        style: {
+          width: progress + '%'
+        }
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-angle-double-left arrow mr-3 mt-5",
+        onClick: () => this.changeCard('left'),
+        style: styles.leftArrow
+      })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card w-50 text-center shadow border-light"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+        className: "card-body"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
+        className: "card-title mt-3"
+      }, cards[currentCard].question), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: "card-text mt-4"
+      }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: answerIcon,
+        onClick: this.handleToggle,
+        style: styles.arrow
+      }), "Show Answer"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+        className: answerIsShown ? 'is-shown' : 'hidden'
+      }, cards[currentCard].answer))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+        className: "fas fa-angle-double-right arrow ml-3 mt-5",
+        onClick: () => this.changeCard('right')
+      })));
+    }
   }
 
 }

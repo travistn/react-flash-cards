@@ -21,3 +21,21 @@
   font-size: 14px;
   color: gray;
 }
+
+@media (min-width: 300px) {
+  .flashcard {
+    width: 300px;
+  }
+}
+
+@media (min-width: 768px) {
+  .flashcard {
+    width: 250px;
+  }
+}
+
+@media (min-width: 992px) {
+  .flashcard {
+    width: 250px;
+  }
+}

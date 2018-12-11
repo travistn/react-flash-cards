@@ -28,6 +28,7 @@ export default class App extends React.Component {
       flashcards: cards,
       cardId: this.state.cardId + 1
     })
+    location.hash = '#cards'
   }
   deleteCard(event) {
     const id = parseInt(event.target.id, 10)
